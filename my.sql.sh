@@ -1,5 +1,4 @@
 #!/bin/bash
-
 USERID=$(id -u)
 Timestamp=$(date +%F-%H-%M-%S)
 script_name=$(echo $0|cut -d "." -f1)
@@ -11,6 +10,7 @@ N="\e[0M"
 
 if [$USERID -ne 0]
 then echo "switch to super user"
+exit 1
 else " u r super user"
 fi
 validate(){
