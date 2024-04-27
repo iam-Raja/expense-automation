@@ -41,7 +41,7 @@ VALIDATE $? "starting mysqld"
 # mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
 # VALIDATE $? "setting up root password"
 
-mysql -h db.daw78s.online -uroot -p${mysql_root_password} -e 'show databases;' &>>$log_file
+mysql -h 54.226.227.12 -uroot -p${mysql_root_password} -e 'show databases;' &>>$log_file
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$log_file
