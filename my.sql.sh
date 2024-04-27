@@ -8,6 +8,9 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+echo "please DB password"
+read -s mysql_root_password
+
 VALIDATE(){
     if [ $1 -ne 0 ]
     then 
@@ -35,6 +38,14 @@ VALIDATE $? "enabling mysqld"
 systemctl start mysqld &>>$log_file
 VALIDATE $? "starting mysqld"
 
-#mysql -h db.
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
-VALIDATE $? "setting up root password"
+# mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
+# VALIDATE $? "setting up root password"
+
+mysql -h db.daw78s.online -uroot -p${mysql_root_password} -e 'show databases;' &>>$log_file
+if [ $? -ne 0 ]
+then
+    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$log_file
+    VALIDATE $? "MySQL Root password Setup"
+else
+    echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
+fi
