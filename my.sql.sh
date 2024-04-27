@@ -8,11 +8,19 @@ G="\e[32M"
 Y="\e[33M"
 N="\e[0M"
 
-if [$USERID -ne 0]
+if [ $USERID -ne 0 ]
 then echo "switch to super user"
 exit 1
 else " u r super user"
 fi
+
+# if [ $USERID -ne 0 ]
+# then
+# echo "switch to root....proceed....."
+# exit 1
+# else
+# echo "u r super user"
+# fi
 validate(){
     If [ $1 -ne 0 ]
     then echo -e "$2 ..... $R Failed $N"
