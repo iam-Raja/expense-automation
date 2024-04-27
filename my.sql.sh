@@ -15,21 +15,12 @@ exit 1
 else
 echo "u r super user"
 fi
-validate(){
-    if [ $1 -ne 0 ]
-    then 
-    echo -e "$2 ..... $R Failed $N"
-    exit 1
-    else 
-    echo -e "$2 ..... $G success $N"
-    fi
-}
 
 dnf install mysql -y &>>$log_file
 validate "$?" " installing mysql"
 
-# dnf install mysql-server -y &>>$log_file
-# validate $? "installing mysql"
+dnf install mysql-server -y &>>$log_file
+validate $? "installing mysql"
 
 systemctl enable mysqld &>>$log_file
 validate $? "enabling mysqld"
@@ -40,3 +31,13 @@ validate $? "starting mysqld"
 #mysql -h db.
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
 validate $? "setting up root password"
+
+validate(){
+    if [ $1 -ne 0 ]
+    then 
+    echo -e "$2 ..... $R Failed $N"
+    exit 1
+    else 
+    echo -e "$2 ..... $G success $N"
+    fi
+}
