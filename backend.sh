@@ -80,7 +80,8 @@ VALIDATE $? "enabling backend"
 dnf install mysql -y &>>$log_file
 VALIDATE $? "installing mysql"
 
-mysql -h 54.226.227.12 uroot -p${my_sql_root_password} < /app/schema/backend.sql &>>$log_file
+mysql -h 54.226.227.12 -uroot -p${my_sql_root_password} < /app/schema/backend.sql &>>$log_file
+#mysql -h 54.226.227.12 -uroot -p${mysql_root_password} -e 'show databases;' &>>$log_file
 VALIDATE $? "setting db passord"
 
 systemctl restart backend &>>$log_file
