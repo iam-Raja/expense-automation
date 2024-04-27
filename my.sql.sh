@@ -3,10 +3,10 @@ USERID=$(id -u)
 Timestamp=$(date +%F-%H-%M-%S)
 script_name=$(echo $0|cut -d "." -f1)
 log_file=/tmp/$script_name-$Timestamp.log
-R="\e[31M"
-G="\e[32M"
-Y="\e[33M"
-N="\e[0M"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
