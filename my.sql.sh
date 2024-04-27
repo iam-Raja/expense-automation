@@ -12,16 +12,10 @@ if [ $USERID -ne 0 ]
 then 
 echo "switch to super user"
 exit 1
-else "u r super user"
+else
+echo "u r super user"
 fi
 
-# if [ $USERID -ne 0 ]
-# then
-# echo "switch to root....proceed....."
-# exit 1
-# else
-# echo "u r super user"
-# fi
 validate(){
     if [ $1 -ne 0 ]
     then 
