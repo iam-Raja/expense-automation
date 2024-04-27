@@ -8,6 +8,16 @@ G="\e[32M"
 Y="\e[33M"
 N="\e[0M"
 
+VALIDATE(){
+    if [ $1 -ne 0 ]
+    then 
+    echo -e "$2 ..... $R Failed $N"
+    exit 1
+    else 
+    echo -e "$2 ..... $G success $N"
+    fi
+}
+
 if [ $USERID -ne 0 ]
 then 
 echo "switch to super user"
@@ -28,13 +38,3 @@ VALIDATE $? "starting mysqld"
 #mysql -h db.
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
 VALIDATE $? "setting up root password"
-
-VALIDATE(){
-    if [ $1 -ne 0 ]
-    then 
-    echo -e "$2 ..... $R Failed $N"
-    exit 1
-    else 
-    echo -e "$2 ..... $G success $N"
-    fi
-}
