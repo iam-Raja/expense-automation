@@ -15,7 +15,7 @@ exit 1
 else
 echo "u r super user"
 fi
-
+echo "coming 2 here bf vliaaaaaaadte"
 validate(){
     if [ $1 -ne 0 ]
     then 
@@ -25,6 +25,7 @@ validate(){
     echo -e "$2 ..... $G success $N"
     fi
 }
+echo "coming 2 here AFter vliadte"
 dnf install mysql-server -y &>>$log_file
 validate $? "installing mysql"
 
