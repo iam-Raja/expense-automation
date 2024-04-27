@@ -16,23 +16,20 @@ else
 echo "u r super user"
 fi
 
-dnf install mysql -y &>>$log_file
-validate "$?" " installing mysql"
-
 dnf install mysql-server -y &>>$log_file
-validate $? "installing mysql"
+VALIDATE $? "installing mysql"
 
 systemctl enable mysqld &>>$log_file
-validate $? "enabling mysqld"
+VALIDATE $? "enabling mysqld"
 
 systemctl start mysqld &>>$log_file
-validate $? "starting mysqld"
+VALIDATE $? "starting mysqld"
 
 #mysql -h db.
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
-validate $? "setting up root password"
+VALIDATE $? "setting up root password"
 
-validate(){
+VALIDATE(){
     if [ $1 -ne 0 ]
     then 
     echo -e "$2 ..... $R Failed $N"
