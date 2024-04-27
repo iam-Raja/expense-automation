@@ -65,7 +65,7 @@ VALIDATE $? "switch the dir app"
 npm install &>>$log_file
 VALIDATE $? "installing dependicies"
 
-cp /root/expense-automation/backend.service  /etc/systemd/system/backend.service &>>$log_file
+cp /home/ec2-user/expense-automation/backend.service  /etc/systemd/system/backend.service &>>$log_file
 VALIDATE $? "moving backend svc"
 
 systemctl daemon-reload &>>$log_file 
