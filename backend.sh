@@ -65,6 +65,7 @@ VALIDATE $? "switch the dir app"
 npm install &>>$log_file
 VALIDATE $? "installing dependicies"
 
+#update correct filepath
 cp /home/ec2-user/expense-automation/backend.service  /etc/systemd/system/backend.service &>>$log_file
 VALIDATE $? "moving backend svc"
 
@@ -80,8 +81,8 @@ VALIDATE $? "enabling backend"
 dnf install mysql -y &>>$log_file
 VALIDATE $? "installing mysql"
 
+# update the DB-name/ip
 mysql -h 54.226.227.12 -uroot -p${my_sql_root_password} < /app/schema/backend.sql &>>$log_file
-#mysql -h 54.226.227.12 -uroot -p${mysql_root_password} -e 'show databases;' &>>$log_file
 VALIDATE $? "setting db passord"
 
 systemctl restart backend &>>$log_file

@@ -46,6 +46,7 @@ VALIDATE $? "moving html"
 unzip /tmp/frontend.zip &>>$log_file
 VALIDATE $? "unzipping code"
 
+#place correct filepath
 cp /home/ec2-user/expense-automation/expense.config  /etc/nginx/default.d/expense.conf &>>$log_file
 VALIDATE $? "moving expense.conf"
 

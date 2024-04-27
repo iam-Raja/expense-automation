@@ -41,6 +41,7 @@ VALIDATE $? "starting mysqld"
 # mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
 # VALIDATE $? "setting up root password"
 
+#change db-/name/ip
 mysql -h 54.226.227.12 -uroot -p${mysql_root_password} -e 'show databases;' &>>$log_file
 if [ $? -ne 0 ]
 then
