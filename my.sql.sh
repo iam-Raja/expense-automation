@@ -9,9 +9,10 @@ Y="\e[33M"
 N="\e[0M"
 
 if [ $USERID -ne 0 ]
-then echo "switch to super user"
+then 
+echo "switch to super user"
 exit 1
-else " u r super user"
+else "u r super user"
 fi
 
 # if [ $USERID -ne 0 ]
@@ -22,10 +23,12 @@ fi
 # echo "u r super user"
 # fi
 validate(){
-    If [ $1 -ne 0 ]
-    then echo -e "$2 ..... $R Failed $N"
+    if [ $1 -ne 0 ]
+    then 
+    echo -e "$2 ..... $R Failed $N"
     exit 1
-    else echo -e "$2 ..... $G success $N"
+    else 
+    echo -e "$2 ..... $G success $N"
     fi
 }
 dnf install mysql-server -y &>>$log_file
