@@ -37,7 +37,7 @@ VALIDATE $? "enabling nodejs:20"
 dnf install nodejs -y &>>$log_file
 VALIDATE $? "installing nodejs"
 
-id expense
+id expense &>>$log_file
 if [ $? -ne 0 ]
 then 
 useradd expense &>>$log_file
@@ -64,7 +64,7 @@ VALIDATE $? "switch the dir app"
 npm install &>>$log_file
 VALIDATE $? "installing dependicies"
 
-cp /c/devops/repos/expense-automation/backend.service  /etc/systemd/system/backend.service &>>$log_file
+cp /root/expense-automation/backend.service  /etc/systemd/system/backend.service &>>$log_file
 VALIDATE $? "moving backend svc"
 
 systemctl daemon-reload &>>$log_file 
